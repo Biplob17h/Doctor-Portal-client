@@ -1,0 +1,51 @@
+.customFont {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.cbtn1:hover {
+    background-color: rgba(58, 66, 86, 1);
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+}
+
+.cbtn2 {
+    border: 1px solid rgba(153, 176, 182, 0.527);
+}
+
+.cbtn2:hover {
+    background: linear-gradient(to left, rgba(25, 211, 174, 1) 0%, rgba(15, 207, 236, 1) 100%);
+
+}
+
+.cBackGround {
+    background: linear-gradient(to left, rgba(25, 211, 174, 1) 0%, rgba(15, 207, 236, 1) 100%);
+}
+
+.cBackGround2 {
+    background-color: rgba(58, 66, 86, 1);
+}
+
+.ctext1 {
+    color: rgba(25, 211, 174, 1);
+}
+
+.ctext2 {
+    color: rgba(58, 66, 86, 1);
+}
+
+.ctext3 {
+    color: rgba(147, 147, 147, 1);
+}
+
+.cborderRed {
+    border-radius: 10px;
+}
+
+.cimg {
+    background-repeat: no-repeat;
+}
+
+.cbor {
+    border: 1px solid red;
+}
