@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Password from "../../Components/Password";
 import Authentication from "../../Layout/Authentication";
 import Main from "../../Layout/Main";
 import Appointment from "../../Pages/Appointment/Appointment/Appointment";
@@ -6,6 +7,7 @@ import Login from "../../Pages/Authentication/Login/Login";
 import Register from "../../Pages/Authentication/Register/Register";
 import Home from "../../Pages/Home/Home/Home";
 import NotFound from "../../Pages/Shared/NotFound/NotFound";
+import PrivateRoutes from "../PrivateRoutes.js/PrivateRoutes";
 
 const routes = createBrowserRouter([
     {
@@ -17,10 +19,10 @@ const routes = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path:'/appointment',
-                element:<Appointment></Appointment>
+                path: '/appointment',
+                element: <PrivateRoutes><Appointment></Appointment></PrivateRoutes>
             }
-            
+
         ]
     },
     {
@@ -37,7 +39,11 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/auth/notfound',
-                element:<NotFound></NotFound>
+                element: <NotFound></NotFound>
+            },
+            {
+                path:'/auth/reset',
+                element:<Password></Password>
             }
         ]
     }

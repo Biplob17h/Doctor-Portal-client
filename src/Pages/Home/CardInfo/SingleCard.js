@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SingleCard = ({ single }) => {
-    console.log(single)
     const { name, dec, img, back } = single;
     return (
         <div className={`card text-white card-compact shadow-xl lg:flex lg:flex-row lg:p-6  ${back}`}>

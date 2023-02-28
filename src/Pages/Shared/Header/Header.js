@@ -1,15 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../ContextApi/UserContext';
 
 const Header = () => {
+    const {user, logOut} = useContext(AuthContext)
+    const handleLogOut = () =>{
+        logOut()
+        .then(()=>{console.log('logout successfull')})
+        .catch((err)=> {console.log(err)})
+    }
     const MenuItems = <>
         <li className='cbtn1'><Link to='/'>Home</Link></li>
         <li className='cbtn1'><Link to='/auth/notfound'>About</Link></li>
         <li className='cbtn1'><Link to='/appointment'>Appointment</Link></li>
         <li className='cbtn1'><Link to='/auth/notfound'>Reviews</Link></li>
         <li className='cbtn1'><Link to='/auth/notfound'>Contact Us</Link></li>
-        <li className='cbtn1'><Link to='/auth/notfound'>Login</Link></li>
+        {
+            user?.email
+            ?<li onClick={handleLogOut} className='cbtn1'><Link>Logout</Link></li>
+            :<li className='cbtn1'><Link to='/auth/login'>Login</Link></li>
+        }
     </>
     return (
         <div className="navbar mx-auto">
