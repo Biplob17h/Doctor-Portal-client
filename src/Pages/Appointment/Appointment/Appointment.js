@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from '../../Shared/Footer/Footer';
 import AppointmentBanner from '../AppointmentBanner/AppointmentBanner';
 import AvailableAppointments from '../AvailableAppointments/AvailableAppointments';
 
@@ -13,6 +14,7 @@ const Appointment = () => {
             <AvailableAppointments
                 selectedDate={selectedDate}
             ></AvailableAppointments>
+            <Footer></Footer>
         </div>
     );
 };

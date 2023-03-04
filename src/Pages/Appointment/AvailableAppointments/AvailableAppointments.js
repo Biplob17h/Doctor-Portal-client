@@ -1,16 +1,26 @@
 import { format } from 'date-fns';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import AppointmentOption from '../AppointmentOption/AppointmentOption';
 import AppointmentModal from '../AppointmentModal/AppointmentModal';
+import { useQuery } from '@tanstack/react-query';
+import { RingLoader } from 'react-spinners';
 
 const AvailableAppointments = ({ selectedDate }) => {
-    const [appointment, setAppointment] = useState([]);
+    const date = format(selectedDate, 'PP')
     const [treatment, setTreatMent] = useState(null)
-    useEffect(() => {
-        fetch('appointment.json')
+    const { data: appointment = [], isLoading, refetch } = useQuery({
+        queryKey: ['appointment', date],
+        queryFn: () => fetch(`http://localhost:5000/appointment?date=${date}`)
             .then(res => res.json())
-            .then(data => setAppointment(data))
-    }, [])
+    })
+    if (isLoading) {
+        return <>
+            <RingLoader className='mx-auto my-auto'
+                color="rgb(206, 44, 44)"
+                size={500}
+            />
+        </>
+    }
     return (
         <section className='mt-[100px] mb-[228px]'>
             <div className='text-center mt-[170px]'>
@@ -30,6 +40,8 @@ const AvailableAppointments = ({ selectedDate }) => {
                 treatment && <AppointmentModal
                     treatment={treatment}
                     selectedDate={selectedDate}
+                    setTreatMent={setTreatMent}
+                    refetch={refetch}
                 ></AppointmentModal>
             }
         </section>

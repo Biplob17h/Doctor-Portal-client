@@ -4,7 +4,7 @@ import { AuthContext } from '../../../ContextApi/UserContext';
 
 const Login = () => {
     const [error, setError] = useState('')
-    const { signIn, LogInWithGoogle, manageResetPassword } = useContext(AuthContext)
+    const { signIn, LogInWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
